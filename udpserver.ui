@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>772</width>
-    <height>646</height>
+    <height>712</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -119,6 +119,13 @@
        <widget class="QPushButton" name="btnSave">
         <property name="text">
          <string>保存</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="replaybtn">
+        <property name="text">
+         <string>回放</string>
         </property>
        </widget>
       </item>

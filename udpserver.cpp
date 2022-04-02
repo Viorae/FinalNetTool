@@ -7,6 +7,7 @@ UdpServer::UdpServer(QWidget *parent) :
 {
     ui->setupUi(this);
 //    loadip(ui->ipcbox);
+
     socket = new QUdpSocket(this);
     iploader=new ipLoader();
     iploader->loadip(ui->ipcbox);
@@ -200,5 +201,72 @@ void UdpServer::on_btnListen_clicked()
 void UdpServer::on_saveconfigbtn_clicked()
 {
     saveConfig();
+}
+
+void UdpServer::autoRead(QDateTime currentTime,QString currentLine){
+    if(!isReplaying){
+        return;
+    }
+    ui->textEdit->setText(currentLine);
+    on_btnSend_clicked();
+    QString nextLine;
+    QDateTime nextTime;
+    QStringList fields;
+    while(!in->atEnd()){
+        nextLine=in->readLine();
+        fields=nextLine.split("/");
+        if(fields.at(0)=="发送"){
+            nextTime=QDateTime::fromString(fields.at(1),"yyyy-MM-dd-HH:mm:ss");
+            QString temp=fields.at(3);
+            QTimer::singleShot(currentTime.secsTo(nextTime)*1000,this,[this,nextTime,temp]{autoRead(nextTime,temp);});
+            return;
+        }
+    }
+    file->close();
+    isReplaying=false;
+    ui->replaybtn->setText("回放");
+    append("Send","回放完成");
+}
+void UdpServer::on_replaybtn_clicked()
+{
+    if(ui->replaybtn->text()=="回放"){
+        QStringList files = QFileDialog::getOpenFileNames(this,"选择回放文件",qApp->applicationDirPath(),"文本文档 (*.txt)");
+        if(files.isEmpty()){
+            return;
+        }
+        file=new QFile(files.at(0));
+        //QFile file(files.at(0));
+        if(!file->open(QIODevice::ReadOnly)) {
+            QMessageBox::information(0, "error", file->errorString());
+        }
+        in=new QTextStream(file);
+        //QTextStream in(&file);
+
+        //in=new QTextStream(&file);
+        QString currentLine;
+        QStringList fields;
+        QDateTime firstTime;
+        while(!in->atEnd())
+        {
+            currentLine=in->readLine();
+            fields=currentLine.split("/");
+            if(fields.at(0)=="发送"){
+                qDebug()<<"called";
+                firstTime=QDateTime::fromString(fields.at(1),"yyyy-MM-dd-HH:mm:ss");
+                isReplaying=true;
+                ui->replaybtn->setText("停止回放");
+                autoRead(firstTime,fields.at(3));
+                return;
+            }
+        }
+    }
+    else{
+        ui->replaybtn->setText("回放");
+        append("Error","回放中止");
+//        timer->stop();
+        isReplaying=false;
+        delete file;
+        delete in;
+    }
 }
 
