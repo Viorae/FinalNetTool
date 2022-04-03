@@ -5,6 +5,7 @@ TcpServer::TcpServer(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::TcpServer)
 {
+
     ui->setupUi(this);
     isListening=false;
     timer=new QTimer(this);

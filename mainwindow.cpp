@@ -8,6 +8,8 @@ mainWindow::mainWindow(QWidget *parent)
     , ui(new Ui::mainWindow)
 {
     ui->setupUi(this);
+
+
     ui->tabWidget->addTab(new TcpServer, "TCP Server");
     ui->tabWidget->addTab(new TcpClient, "TCP Client");
     ui->tabWidget->addTab(new UdpServer, "UDP Client");

@@ -6,21 +6,14 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>772</width>
-    <height>712</height>
+    <width>602</width>
+    <height>542</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="0" colspan="2">
-    <widget class="QTextEdit" name="txtMain">
-     <property name="readOnly">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
    <item row="0" column="2" rowspan="2">
     <widget class="QFrame" name="frame">
      <property name="minimumSize">
@@ -224,6 +217,13 @@
      </property>
      <property name="text">
       <string>发送</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0" colspan="2">
+    <widget class="QTextEdit" name="txtMain">
+     <property name="readOnly">
+      <bool>true</bool>
      </property>
     </widget>
    </item>

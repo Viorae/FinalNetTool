@@ -129,7 +129,7 @@ void TcpClient::on_btnSend_clicked()
     if(!isConnected){
         return;
     }
-    QString data=ui->sendtxt->toPlainText();
+    QString data=ui->textEdit->toPlainText();
     if(data.length()<=0){
         return;
     }
@@ -208,7 +208,7 @@ void TcpClient::autoRead(QDateTime currentTime,QString currentLine){
     if(!isReplaying){
         return;
     }
-    ui->sendtxt->setText(currentLine);
+    ui->textEdit->setText(currentLine);
     on_btnSend_clicked();
     QString nextLine;
     QDateTime nextTime;
