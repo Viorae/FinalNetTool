@@ -25,6 +25,16 @@
   <property name="windowTitle">
    <string>mainWindow</string>
   </property>
+  <property name="accessibleDescription">
+   <string/>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QFrame#frame{background-color:#D1D0D0}
+QLabel#labCount{border:0px;color:black}
+QTextEdit#txtMain{border:3px solid black;background-color:#D1D0D0;font-size:15px}
+QWidget#mainWindow{background-color:white;border:0px}
+</string>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="leftMargin">
     <number>0</number>
@@ -41,7 +51,7 @@
    <item>
     <widget class="QTabWidget" name="tabWidget">
      <property name="sizePolicy">
-      <sizepolicy hsizetype="Ignored" vsizetype="Preferred">
+      <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
