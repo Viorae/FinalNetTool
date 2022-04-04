@@ -11,9 +11,11 @@ TcpClient::TcpClient(QWidget *parent) :
     iploader->loadip(ui->cboxaddr);
 //    loadip(ui->cboxaddr);
     initConfig();
+    timer=new QTimer(this);
     finddialog=new FindDialog();
     isConnected=false;
     socket=new QTcpSocket(this);
+    connect(timer,&QTimer::timeout,this,&TcpClient::on_btnSend_clicked);
     connect(finddialog,SIGNAL(reset()),this,SLOT(reset()));
     connect(finddialog,SIGNAL(search(QString)),this,SLOT(search(QString)));
     connect(socket, SIGNAL(disconnected()), this, SLOT(disconnected()));
@@ -268,6 +270,20 @@ void TcpClient::on_replaybtn_clicked()
         isReplaying=false;
         delete file;
         delete in;
+    }
+}
+
+
+void TcpClient::on_autobtn_clicked()
+{
+    if(timer->isActive())
+    {
+        timer->stop();
+        ui->autobtn->setText("定时发送");
+    }
+    else{
+        ui->autobtn->setText("停止发送");
+        timer->start(ui->intervaltxt->text().toInt());
     }
 }
 
