@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>600</height>
+    <height>695</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,10 +17,16 @@
    <item row="0" column="0" colspan="2">
     <widget class="QTextEdit" name="txtMain">
      <property name="sizePolicy">
-      <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+      <sizepolicy hsizetype="Ignored" vsizetype="Preferred">
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>0</height>
+      </size>
      </property>
      <property name="readOnly">
       <bool>true</bool>
@@ -122,6 +128,23 @@
        <widget class="QLineEdit" name="serverport"/>
       </item>
       <item>
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>定时发送间隔/ms</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="intervaltxt"/>
+      </item>
+      <item>
+       <widget class="QPushButton" name="autobtn">
+        <property name="text">
+         <string>定时发送</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QPushButton" name="replaybtn">
         <property name="text">
          <string>回放</string>
@@ -131,7 +154,7 @@
       <item>
        <widget class="QPushButton" name="btnConnect">
         <property name="sizePolicy">
-         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+         <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -147,7 +170,7 @@
       <item>
        <widget class="QPushButton" name="btnSave">
         <property name="sizePolicy">
-         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+         <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -170,7 +193,7 @@
       <item>
        <widget class="QPushButton" name="searchbtn">
         <property name="sizePolicy">
-         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+         <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -183,7 +206,7 @@
       <item>
        <widget class="QPushButton" name="saveconfigbtn">
         <property name="sizePolicy">
-         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+         <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -204,7 +227,7 @@
        </widget>
       </item>
       <item>
-       <spacer name="spacer">
+       <spacer name="verticalSpacer">
         <property name="orientation">
          <enum>Qt::Vertical</enum>
         </property>
@@ -220,7 +243,7 @@
     </widget>
    </item>
    <item row="1" column="0">
-    <widget class="QTextEdit" name="sendtxt">
+    <widget class="QTextEdit" name="textEdit">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Minimum" vsizetype="Ignored">
        <horstretch>0</horstretch>
@@ -232,7 +255,7 @@
    <item row="1" column="1">
     <widget class="QPushButton" name="btnSend">
      <property name="sizePolicy">
-      <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+      <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>

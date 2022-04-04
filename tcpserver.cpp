@@ -5,14 +5,15 @@ TcpServer::TcpServer(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::TcpServer)
 {
+
     ui->setupUi(this);
     isListening=false;
     timer=new QTimer(this);
     iploader=new ipLoader();
     iploader->loadip(ui->cboxaddr);
     initConfig();
-//    timer = new QTimer(this);
-//    timer->setSingleShot(true);
+    //    timer = new QTimer(this);
+    //    timer->setSingleShot(true);
     qtcpserver=new QTcpServer(this);
     connect(qtcpserver,SIGNAL(newConnection()),this,SLOT(newconnect()));
     connect(timer,&QTimer::timeout,this,&TcpServer::on_btnSend_clicked);
@@ -287,7 +288,7 @@ void TcpServer::on_replaybtn_clicked()
     else{
         ui->replaybtn->setText("回放");
         append("Error","回放中止");
-//        timer->stop();
+        //        timer->stop();
         isReplaying=false;
         delete file;
         delete in;
@@ -301,8 +302,10 @@ void TcpServer::on_autobtn_clicked()
     if(timer->isActive())
     {
         timer->stop();
+        ui->autobtn->setText("定时发送");
     }
     else{
+        ui->autobtn->setText("停止发送");
         timer->start(ui->intervaltxt->text().toInt());
     }
 }

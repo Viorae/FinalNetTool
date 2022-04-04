@@ -6,13 +6,14 @@ UdpServer::UdpServer(QWidget *parent) :
     ui(new Ui::UdpServer)
 {
     ui->setupUi(this);
-//    loadip(ui->ipcbox);
-
+    //    loadip(ui->ipcbox);
+    timer=new QTimer(this);
     socket = new QUdpSocket(this);
     iploader=new ipLoader();
     iploader->loadip(ui->ipcbox);
     initConfig();
     isBinded=false;
+    connect(timer,&QTimer::timeout,this,&UdpServer::on_btnSend_clicked);
     connect(socket, SIGNAL(errorOccurred(QAbstractSocket::SocketError)), this, SLOT(error()));
     connect(socket, SIGNAL(readyRead()), this, SLOT(readData()));
 }
@@ -263,10 +264,24 @@ void UdpServer::on_replaybtn_clicked()
     else{
         ui->replaybtn->setText("回放");
         append("Error","回放中止");
-//        timer->stop();
+        //        timer->stop();
         isReplaying=false;
         delete file;
         delete in;
+    }
+}
+
+
+void UdpServer::on_autobtn_clicked()
+{
+    if(timer->isActive())
+    {
+        timer->stop();
+        ui->autobtn->setText("定时发送");
+    }
+    else{
+        ui->autobtn->setText("停止发送");
+        timer->start(ui->intervaltxt->text().toInt());
     }
 }
 

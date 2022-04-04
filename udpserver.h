@@ -21,9 +21,10 @@ public:
 private:
     QUdpSocket *socket;
     bool isBinded;
-     bool isReplaying;
-     QTextStream *in;
-     QFile *file;
+    bool isReplaying;
+    QTimer *timer;
+    QTextStream *in;
+    QFile *file;
     ipLoader *iploader;
     Ui::UdpServer *ui;
 private slots:
@@ -42,6 +43,7 @@ private slots:
     void on_btnListen_clicked();
     void on_saveconfigbtn_clicked();
     void on_replaybtn_clicked();
+    void on_autobtn_clicked();
 };
 
 

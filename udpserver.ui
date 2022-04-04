@@ -6,21 +6,14 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>772</width>
-    <height>712</height>
+    <width>602</width>
+    <height>748</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="0" colspan="2">
-    <widget class="QTextEdit" name="txtMain">
-     <property name="readOnly">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
    <item row="0" column="2" rowspan="2">
     <widget class="QFrame" name="frame">
      <property name="minimumSize">
@@ -107,6 +100,23 @@
       </item>
       <item>
        <widget class="QLineEdit" name="targetPort"/>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_3">
+        <property name="text">
+         <string>定时间隔/ms</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="intervaltxt"/>
+      </item>
+      <item>
+       <widget class="QPushButton" name="autobtn">
+        <property name="text">
+         <string>定时发送</string>
+        </property>
+       </widget>
       </item>
       <item>
        <widget class="QPushButton" name="btnListen">
@@ -224,6 +234,13 @@
      </property>
      <property name="text">
       <string>发送</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0" colspan="2">
+    <widget class="QTextEdit" name="txtMain">
+     <property name="readOnly">
+      <bool>true</bool>
      </property>
     </widget>
    </item>
